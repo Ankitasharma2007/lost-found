@@ -7,5 +7,5 @@ urlpatterns = [
      path('register/', views.register, name = 'register'),
      path('<int:new_id>/', views.all_Track, name='all_Track'),
      path('', views.all_Track, name='all_Track'),
-     path('register/', register_echo, name='register'),
+     path('echo', register_echo, name='register'),
 ]
