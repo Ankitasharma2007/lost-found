@@ -26,28 +26,28 @@ class LostSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Lost
-        fields = ['rollnumber','nameofarticle','description','location']
+        fields = ['nameofarticle','description','location']
 
-    def create(self, validated_data):
-        lost = Lost.objects.create(
-            rollnumber = validated_data.get('rollnumber'),
-            nameofarticle = validated_data.get('nameofarticle'),
-            description = validated_data.get('description'),
-            location = validated_data.get('location'),
-        )
-        return lost
+    # def create(self, validated_data):
+    #     lost = Lost.objects.create(
+    #         rollnumber = validated_data.get('rollnumber'),
+    #         nameofarticle = validated_data.get('nameofarticle'),
+    #         description = validated_data.get('description'),
+    #         location = validated_data.get('location'),
+    #     )
+    #     return lost
 
 class FoundSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Found
-        fields = ['rollnumber','nameofarticle','description','location']
+        fields = ['nameofarticle','description','location']
 
-    def create(self, validated_data):
-        found = Found.objects.create(
-            rollnumber = validated_data.get('rollnumber'),
-            nameofarticle = validated_data.get('nameofarticle'),
-            description = validated_data.get('description'),
-            location = validated_data.get('location'),
-        )
-        return found
+    # def create(self, validated_data):
+    #     found = Found.objects.create(
+    #         rollnumber = validated_data.get('rollnumber'),
+    #         nameofarticle = validated_data.get('nameofarticle'),
+    #         description = validated_data.get('description'),
+    #         location = validated_data.get('location'),
+    #     )
+    #     return found
