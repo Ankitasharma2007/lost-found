@@ -1,5 +1,6 @@
 from rest_framework import serializers
 from django.contrib.auth import get_user_model
+from .models import Lost,Found
 
 User = get_user_model()
 
@@ -13,12 +14,40 @@ class RegisterSerializer(serializers.ModelSerializer):
     
     def create(self, validated_data):
         user = User.objects.create_user(
-            username=validated_data['username'],
-            email=validated_data['email'],
-            password=validated_data['password'],
+            username=validated_data.get('username'),
+            email=validated_data.get('email'),
+            password=validated_data.get('password'),
             phonenumber=validated_data.get('phonenumber'),
             rollnumber=validated_data.get('rollnumber'),
         )
         return user
     
-    
+class LostSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Lost
+        fields = ['rollnumber','nameofarticle','description','location']
+
+    def create(self, validated_data):
+        lost = Lost.objects.create_lost(
+            rollnumber = validated_data.get('rollnumber'),
+            nameofarticle = validated_data.get('nameofarticle'),
+            description = validated_data.get('description'),
+            location = validated_data.get('location'),
+        )
+        return lost
+
+class FoundSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Found
+        fields = ['rollnumber','nameofarticle','description','location']
+
+    def create(self, validated_data):
+        found = Found.objects.create_found(
+            rollnumber = validated_data.get('rollnumber'),
+            nameofarticle = validated_data.get('nameofarticle'),
+            description = validated_data.get('description'),
+            location = validated_data.get('location'),
+        )
+        return found
