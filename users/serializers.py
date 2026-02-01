@@ -29,7 +29,7 @@ class LostSerializer(serializers.ModelSerializer):
         fields = ['rollnumber','nameofarticle','description','location']
 
     def create(self, validated_data):
-        lost = Lost.objects.create_lost(
+        lost = Lost.objects.create(
             rollnumber = validated_data.get('rollnumber'),
             nameofarticle = validated_data.get('nameofarticle'),
             description = validated_data.get('description'),
@@ -44,7 +44,7 @@ class FoundSerializer(serializers.ModelSerializer):
         fields = ['rollnumber','nameofarticle','description','location']
 
     def create(self, validated_data):
-        found = Found.objects.create_found(
+        found = Found.objects.create(
             rollnumber = validated_data.get('rollnumber'),
             nameofarticle = validated_data.get('nameofarticle'),
             description = validated_data.get('description'),

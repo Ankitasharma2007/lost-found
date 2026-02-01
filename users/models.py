@@ -17,11 +17,16 @@ class Lost(models.Model):
     location = models.CharField(max_length=100)
     resolved = models.BooleanField(default=False)
 
+    def __str__(self):
+        return self.nameofarticle
+
 class Found(models.Model):
     rollnumber = models.IntegerField(null=True, blank=True)
     nameofarticle = models.CharField(max_length = 100)
     description = models.CharField(max_length=100)
     location = models.CharField(max_length=100)
 
+    def __str__(self):
+        return self.nameofarticle
 
 
