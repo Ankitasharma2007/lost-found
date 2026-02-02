@@ -2,9 +2,9 @@ from django.shortcuts import render
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
-from .serializers import RegisterSerializer,LostSerializer ,FoundSerializer,LostListSerializer
+from .serializers import RegisterSerializer,LostSerializer ,FoundSerializer,LostListSerializer,FoundListSerializer
 from rest_framework.permissions import IsAuthenticated,IsAdminUser
-from .models import Lost
+from .models import Lost , Found
 
 # Create your views here.
 
@@ -38,6 +38,14 @@ class LostListView(APIView):
     permission_classes = [IsAdminUser]
 
     def get(self,request):
-        query = Lost.objects.all()
-        serializer = LostListSerializer(query)
-        return Response(serializer.data())
+        query = Lost.objects.filter(resolved = False)
+        serializer = LostListSerializer(query,many=True)
+        return Response(serializer.data)
+    
+class FoundListView(APIView):
+    permission_classes = [IsAdminUser]
+
+    def get(self,request):
+        query = Found.objects.filter(lost_item__isnull = True)
+        serializer = FoundListSerializer(query,many=True)
+        return Response(serializer.data)

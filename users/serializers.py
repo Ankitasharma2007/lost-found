@@ -55,5 +55,9 @@ class FoundSerializer(serializers.ModelSerializer):
 class LostListSerializer(serializers.ModelSerializer):
     class Meta:
         model = Lost
-        fields = ['id','rollnumber','nameofarticle','description','location','resolved','found_name']
+        fields = ['id','rollnumber','nameofarticle','description','location','resolved','found_item']
 
+class FoundListSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Found
+        fields = ['id','rollnumber','nameofarticle','description','location','lost_item']
