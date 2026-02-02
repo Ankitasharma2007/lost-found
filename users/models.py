@@ -39,7 +39,7 @@ class Lost(models.Model):
     location = models.CharField(max_length=100)
     resolved = models.BooleanField(default=False)
 
-    models.OneToOneField(
+    found_name = models.OneToOneField(
         Found,
         on_delete=models.SET_NULL,
         null=True,

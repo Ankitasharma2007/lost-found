@@ -51,3 +51,9 @@ class FoundSerializer(serializers.ModelSerializer):
     #         location = validated_data.get('location'),
     #     )
     #     return found
+
+class LostListSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Lost
+        fields = ['id','rollnumber','nameofarticle','description','location','resolved','found_name']
+

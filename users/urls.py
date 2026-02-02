@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.urls import path
 from .views import RegisterView
 from .views import LostView
-from .views import FoundView
+from .views import FoundView,LostListView
 
 from rest_framework_simplejwt.views import (TokenObtainPairView,
     TokenRefreshView,
@@ -15,5 +15,6 @@ urlpatterns = [
     path('token/refresh/', TokenRefreshView.as_view()),
     path('lost/', LostView.as_view()),
     path('found/', FoundView.as_view()),
+    path('lostlist/',LostListView.as_view())
 
     ]
